@@ -1,0 +1,8 @@
+pyproject.toml
+ai_asssistant.egg-info/PKG-INFO
+ai_asssistant.egg-info/SOURCES.txt
+ai_asssistant.egg-info/dependency_links.txt
+ai_asssistant.egg-info/top_level.txt
+src/assistant.py
+src/config.py
+tools/search_files.py

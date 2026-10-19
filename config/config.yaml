@@ -1,0 +1,4 @@
+agent_name: "Irena"
+model: "llama3.1:8b"
+tts_voice: false
+tts_enabled: true
