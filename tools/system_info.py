@@ -17,7 +17,16 @@ def system_info() -> str:
         info['ram']=str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
         return str(info)
     except Exception as e:
-        return e
+        return str(e)
+
+SCHEMA = {
+    "type": "function",
+    "function": {
+        "name": "system_info",
+        "description": "Provide system info"
+        }
+    }
+
 
 if __name__ == '__main__':
     print(system_info())

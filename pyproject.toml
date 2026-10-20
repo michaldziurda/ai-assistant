@@ -1,5 +1,5 @@
 [project]
-name = "ai-asssistant"
+name = "ai-assistant"
 version = "0.1.0"
 
 [build-system]

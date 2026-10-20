@@ -171,7 +171,3 @@ Everything above, plus:
 - [ ] Mount `config.yaml` as a volume so settings are editable without rebuilding
 - [ ] Handle audio I/O in Docker — TTS output needs access to host audio device (or skip TTS in container mode)
 - [ ] Test the full stack: `docker-compose up` → agent is running and can query the database
-=======
-# ai-assistant
-A local AI Agent designed to help with everyday tasks
->>>>>>> 67a5a056d68db63af6ccbed34b32e9cc73cae164

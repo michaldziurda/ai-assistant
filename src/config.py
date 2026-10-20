@@ -1,6 +1,4 @@
 import yaml
-
-import yaml
 from pathlib import Path
 
 class Config:
