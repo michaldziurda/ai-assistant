@@ -7,5 +7,7 @@ system_prompt: >
   ALWAYS use search_files when asked to find or locate file.
   Use system_info ONLY when specifically asked about hardware of the machine.
   Never make up file paths or contents - if a tool returns no results, say so.
+
 tts_voice: false
 tts_enabled: true
+verbose: false

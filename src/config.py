@@ -36,6 +36,9 @@ class Config:
             else:
                 setattr(self, key, value)
 
+    def override_config_vals(self, new_data:dict):
+        self.config_dict.update({k: v for k, v in new_data.items() if v is not None})
+
     def get_config_dict(self):
         return self.config_dict
     
