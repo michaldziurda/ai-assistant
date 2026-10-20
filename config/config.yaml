@@ -1,4 +1,8 @@
 agent_name: "Irena"
 model: "llama3.1:8b"
+
+system_prompt: > 
+  You are Irena, a helpful local assistant.
+  User the available tolls when needed. Be concise.
 tts_voice: false
 tts_enabled: true

@@ -23,7 +23,11 @@ SCHEMA = {
     "type": "function",
     "function": {
         "name": "system_info",
-        "description": "Provide system info"
+        "description": "Provide system info",
+        "parameters": {
+            "type": "object",
+            "properties": {}
+        }
         }
     }
 

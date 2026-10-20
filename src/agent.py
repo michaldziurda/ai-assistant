@@ -9,9 +9,9 @@ class Agent:
         print(self.config)
 
         self.client = ollama.Client()
-        self.agent_name = self.config.agent_name
         self.model = self.config.model
-        self.messages = [] # TODO - like a default prompt defining a role here?
+        prompt = self.config.system_prompt
+        self.messages = [{"role": "system", "content": prompt}] 
 
     def execute_tool(self, tool_name:str, arguments:dict):
         if tool_name not in TOOL_REGISTRY:
@@ -23,7 +23,7 @@ class Agent:
     def ask(self, user_input: str) -> str:
         self.messages.append({
             "role": "user",
-            "contet": user_input
+            "content": user_input
         })
 
         for _ in range(10):
@@ -50,9 +50,10 @@ class Agent:
                     result = self.execute_tool(tool_name, arguments)
                 except Exception as e:
                     self.messages.append({
-                        "error": str(e),
-                        "tool_name": tool_name,
+                        "role": "tool",
+                        "content": f"Error: {e}"
                     })
+                    continue
 
                 self.messages.append({
                     "role": "tool",
