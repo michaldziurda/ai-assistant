@@ -6,7 +6,6 @@ from tools.registry import TOOL_REGISTRY, TOOL_SCHEMAS
 class Agent:
     def __init__(self, config_path:str):
         self.config = Config(config_path)#.get_config_dict()
-        print(self.config)
 
         self.client = ollama.Client()
         self.model = self.config.model

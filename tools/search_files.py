@@ -1,33 +1,32 @@
 import os
+import fnmatch
 
-def search_files(name:str, start_path=None) -> str:
-    if start_path:
-        path = start_path
-    else:
-        path = os.path.abspath(os.sep) # User root directory if not provided
+def search_files(pattern:str, start_path=None) -> str:
+    path = start_path or os.path.abspath(os.sep) # If path not provided, use root dir
         
     files_found = []
     for root, dirs, files in os.walk(path):
-        if name in files:
-            files_found.append(os.path.join(root, name))
+        for f in files:
+            if fnmatch.fnmatch(f, pattern):
+                files_found.append(os.path.join(root, f))
 
     if len(files_found) > 0:
-        return ",".join(files_found)
+        return "\n".join(files_found)
     else:
-        return ""
+        return f"No files found matching {pattern} found in {path}"
 
 SCHEMA = {
     "type": "function",
     "function": {
         "name": "search_files",
-        "description": "Search for provided filenames. Optionally provide starting path",
+        "description": "Search for files matching a glob pattern. Optionally provide starting path",
         "parameters": {
             "type": "object",
             "properties": {
-                "name": {"type": "string", "description": "File name to search for"},
-                "start_path": {"type": "string", "description": "Where to begin the search"}
+                "pattern": {"type": "string", "description": "Glob pattern, e.g. *.json, *.py, report_*"},
+                "start_path": {"type": "string", "description": "Directory to search in"}
             },
-            "required": ["name"]
+            "required": ["pattern"]
         }
     }
 }
